@@ -1,8 +1,9 @@
 import { createAsyncThunk, createReducer } from '@reduxjs/toolkit';
 import axios from 'axios';
+import PATH from '../path';
 
 export const branchOfficesGetter = createAsyncThunk("BRANCH_OFFICES_GETTER", async () => {
-    return await axios.get('http://localhost:3001/api/branchOffice/showBranch')
+    return await axios.get(`${PATH}/api/branchOffice/showBranch`)
     .then((res) => {
         console.log(res.data.data)  
         localStorage.setItem('branches', JSON.stringify({branches: res.data.data}))
